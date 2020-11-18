@@ -1,14 +1,18 @@
 # Calendar
+
 1. Replace `<your_account>` with your Github username in the links
-    - [DEMO LINK](https://<your_account>.github.io/layout_calendar/)
-    - [TEST REPORT LINK](https://<your_account>.github.io/layout_calendar/report/html_report/)
+   - [DEMO LINK](https://troospieler.github.io/layout_calendar/)
+   - [TEST REPORT LINK](https://troospieler.github.io/layout_calendar/report/html_report/)
 2. Follow [this instructions](https://mate-academy.github.io/layout_task-guideline/)
-    - Write styles in `src/styles/main.scss` instead of `src/style.css`.
-    - This task does not have tests so you need to check if it works as expected manually.
-___
+   - Write styles in `src/styles/main.scss` instead of `src/style.css`.
+   - This task does not have tests so you need to check if it works as expected manually.
+
+---
 
 ## Task
+
 Display a calendar in the middle of the screen. The HTML of the calendar needs to have the following structure:
+
 ```html
 <div class="calendar calendar-30 calendar-tue">
   <div></div>
@@ -21,6 +25,7 @@ Display a calendar in the middle of the screen. The HTML of the calendar needs t
   <div></div>
 </div>
 ```
+
 - Use `.scss` for this task. Please do not use JavaScript.
   - [@each](https://sass-lang.com/documentation/at-rules/control/each)
   - [@for](https://sass-lang.com/documentation/at-rules/control/for)
@@ -38,8 +43,9 @@ Display a calendar in the middle of the screen. The HTML of the calendar needs t
 - The hovered cell has to become pink
   - (**Optional**) Move it up by `20px`.
   - (**Optional**) both of these properties are to be animated with the duration of half a second.
-  
+
 --> [CHECKLIST](https://github.com/mate-academy/layout_snake/blob/master/checklist.md)
 
 ## Here is a preview:
+
 ![reference image](reference.png).

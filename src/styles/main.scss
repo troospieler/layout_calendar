@@ -1,3 +1,97 @@
+// @import "style";
+$size: 100px;
+
+@mixin flexy {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@mixin box {
+  display: none;
+  margin: 0 1px 1px 0;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: $size;
+  height: $size;
+  background-color: #eee;
+  border: 1px solid black;
+  position: relative;
+  transition: 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+}
+
 body {
-  margin: 0;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.calendar {
+  @include flexy;
+  max-width: $size * 7 + 7px;
+}
+
+.calendar > div {
+  @include box;
+}
+
+.calendar *:hover {
+  background-color: pink;
+  cursor: pointer;
+  transform: translate(0, -$size * 0.2);
+}
+
+@for $i from 1 through 31 {
+  .calendar :nth-child(#{$i})::after {
+    content: "#{$i}";
+  }
+}
+
+$week-start: (
+  "calendar-mon": 0,
+  "calendar-tue": 1,
+  "calendar-wed": 2,
+  "calendar-thu": 3,
+  "calendar-fri": 4,
+  "calendar-sat": 5,
+  "calendar-sun": 6,
+);
+
+@each $day, $move in $week-start {
+  .#{$day} > div:first-child {
+    margin-left: $size * $move + $move;
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar :nth-child(#{$i})::after {
+    content: "#{$i}";
+  }
+}
+
+$calendar-length: (28, 29, 30, 31);
+
+@each $days in $calendar-length {
+  .calendar-#{$days} > :nth-child(-n + #{$days}) {
+    display: flex;
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar :nth-child(#{$i})::after {
+    content: "#{$i}";
+  }
 }
