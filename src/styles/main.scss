@@ -1,5 +1,8 @@
-// @import "style";
 $size: 100px;
+
+* {
+  box-sizing: border-box;
+}
 
 @mixin flexy {
   display: flex;
@@ -8,20 +11,18 @@ $size: 100px;
 
 @mixin box {
   display: none;
-  margin: 0 1px 1px 0;
-  flex-shrink: 0;
-  justify-content: center;
+  position: relative;
   align-items: center;
+  justify-content: center;
+
+  margin: 0 1px 1px 0;
   width: $size;
   height: $size;
+
   background-color: #eee;
   border: 1px solid black;
-  position: relative;
-  transition: 0.5s;
-}
 
-* {
-  box-sizing: border-box;
+  transition: 0.5s;
 }
 
 html {
@@ -42,16 +43,16 @@ body {
 .calendar {
   @include flexy;
   max-width: $size * 7 + 7px;
-}
 
-.calendar > div {
-  @include box;
-}
+  & :nth-child(n) {
+    @include box;
 
-.calendar *:hover {
-  background-color: pink;
-  cursor: pointer;
-  transform: translate(0, -$size * 0.2);
+    &:hover {
+      background-color: pink;
+      cursor: pointer;
+      transform: translate(0, -$size * 0.2);
+    }
+  }
 }
 
 @for $i from 1 through 31 {
@@ -76,22 +77,10 @@ $week-start: (
   }
 }
 
-@for $i from 1 through 31 {
-  .calendar :nth-child(#{$i})::after {
-    content: "#{$i}";
-  }
-}
-
 $calendar-length: (28, 29, 30, 31);
 
 @each $days in $calendar-length {
   .calendar-#{$days} > :nth-child(-n + #{$days}) {
     display: flex;
-  }
-}
-
-@for $i from 1 through 31 {
-  .calendar :nth-child(#{$i})::after {
-    content: "#{$i}";
   }
 }
